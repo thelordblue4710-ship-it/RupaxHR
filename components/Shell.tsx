@@ -7,16 +7,18 @@ export default function Shell({
   children,
 }: {
   profile: Profile;
-  active: "dashboard" | "employees" | "schedules";
+  active: "dashboard" | "employees" | "schedules" | "clock" | "timesheets";
   children: React.ReactNode;
 }) {
   const isManager = profile.role === "manager";
+  
   const nav = [
     { key: "dashboard", href: "/dashboard", label: "Dashboard", show: true },
+    { key: "clock", href: "/clock", label: "Clock", show: true },
     { key: "employees", href: "/employees", label: "Employees", show: isManager },
     { key: "schedules", href: "/schedules", label: "Schedules", show: true },
+    { key: "timesheets", href: "/timesheets", label: "Timesheets", show: isManager },
   ].filter((n) => n.show);
-
   return (
     <div className="min-h-screen">
       <header className="border-b border-line bg-white">
